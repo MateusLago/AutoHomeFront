@@ -1,0 +1,25 @@
+*{
+    font-family: verdana;
+}
+
+body {
+    background-color: lightgray!important;
+    width: 100%;
+}
+
+.login-div{
+    width: 35vw;
+    height: 70vh;
+    background-color: white;
+    margin: auto;
+}
+
+.login-text{
+    font-weight: bold;
+    width: 100%;
+}
+
+.link{
+    color: rgb(111, 178, 255)!important;
+    font-size: 12pt;
+}
