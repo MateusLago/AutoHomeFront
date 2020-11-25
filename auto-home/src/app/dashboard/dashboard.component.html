@@ -1,0 +1,382 @@
+<div class="d-flex" id="wrapper">
+  <!-- Sidebar -->
+  <div class="bg-light border-right" id="sidebar-wrapper">
+    <div class="sidebar-heading">Auto Home</div>
+    <div class="list-group list-group-flush">
+      <a (click)="this.changeModule('Luzes')" class="list-group-item list-group-item-action bg-light"
+        >Luzes</a
+>
+      <a (click)="this.changeModule('Trancas')" class="list-group-item list-group-item-action bg-light"
+        >Trancas</a
+      >
+      <a (click)="this.changeModule('Temperatura')" class="list-group-item list-group-item-action bg-light">Temperatura</a>
+      <a (click)="this.changeModule('Ares-Condicionados')" class="list-group-item list-group-item-action bg-light">Ares-Condicionados</a>
+
+      <a href="#" class="list-group-item list-group-item-action bg-light"
+        >Logout</a
+      >
+    </div>
+  </div>
+  <!-- /#sidebar-wrapper -->
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+      <button class="btn btn-primary" id="menu-toggle">Menu</button>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="/dashboard"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="true"
+            >
+              Usuário
+            </a>
+            <div
+              class="dropdown-menu dropdown-menu-right"
+              aria-labelledby="navbarDropdown"
+            >
+              <a class="dropdown-item" href="#">Logout</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <span *ngIf="module === 'Luzes'">
+        <h3>Luzes</h3>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card" style="width: 90%">
+              <div class="card-body">
+                <h5 class="card-title">Quarto 1</h5>
+                <h6 class="card-subtitle mb-2 text-muted">
+                  <span class="float-left">Status: </span>
+                  <div
+                    class="float-left ml-1 mt-1"
+                    style="
+                      width: 12px;
+                      height: 12px;
+                      border-radius: 10px;
+                    "
+                    
+                    [ngClass]="this.lights[0] === 'on' ? 'status-on' : 'status-off'"
+                  ></div>
+                </h6>
+                <br />
+                <p>Tempo Ligado: 0hrs</p>
+                <button (click)="changeLights('on', 0)" class="btn btn-success">Ligar</button>
+                <button (click)="changeLights('off', 0)" class="btn btn-danger ml-3">Desligar</button>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-md-4">
+            <div class="card" style="width: 90%">
+              <div class="card-body">
+                <h5 class="card-title">Sala</h5>
+                <h6 class="card-subtitle mb-2 text-muted">
+                  <span class="float-left">Status: </span>
+                  <div
+                    class="float-left ml-1 mt-1"
+                    style="
+                      width: 12px;
+                      height: 12px;
+                      border-radius: 10px;
+                      background-color: re
+                      d;
+                    "[ngClass]="this.lights[1] === 'on' ? 'status-on' : 'status-off'"
+                  ></div>
+                </h6>
+                <br />
+                <p>Tempo Ligado: 0hrs</p>
+                <button (click)="changeLights('on', 1)" class="btn btn-success">Ligar</button>
+                <button (click)="changeLights('off', 1)" class="btn btn-danger ml-3">Desligar</button>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-md-4">
+            <div class="card" style="width: 90%">
+              <div class="card-body">
+                <h5 class="card-title">Banheiro</h5>
+                <h6 class="card-subtitle mb-2 text-muted">
+                  <span class="float-left">Status: </span>
+                  <div
+                    class="float-left ml-1 mt-1"
+                    style="
+                      width: 12px;
+                      height: 12px;
+                      border-radius: 10px;
+                      background-color: gr
+                      eenyellow;
+                    "[ngClass]="this.lights[2] === 'on' ? 'status-on' : 'status-off'"
+                  ></div>
+                </h6>
+                <br />
+                <p>Tempo Ligado: 0hrs</p>
+                <button (click)="changeLights('on', 2)" class="btn btn-success">Ligar</button>
+                <button (click)="changeLights('off', 2)" class="btn btn-danger ml-3">Desligar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </span>
+
+     <span *ngIf="module === 'Trancas'">
+      <h3>Trancas</h3>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card" style="width: 90%">
+            <div class="card-body">
+              <h5 class="card-title">Porta da Frente</h5>
+              <h6 class="card-subtitle mb-2 text-muted">
+                <span class="float-left">Status: </span>
+                <div
+                  class="float-left ml-1 mt-1"
+                  style="
+                    width: 12px;
+                    height: 12px;
+                    border-radius: 10px;
+                  "
+                  [ngClass]="this.locks[0] === 'on' ? 'status-on' : 'status-off'"
+                ></div>
+              </h6>
+              <br />
+              <p>Tempo Ligado: 0hrs</p>
+              <button (click)="changeLocks('on', 0)" class="btn btn-success">Ligar</button>
+                <button (click)="changeLocks('off', 0)" class="btn btn-danger ml-3">Desligar</button>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-md-4">
+          <div class="card" style="width: 90%">
+            <div class="card-body">
+              <h5 class="card-title">Portão da Garagem</h5>
+              <h6 class="card-subtitle mb-2 text-muted">
+                <span class="float-left">Status: </span>
+                <div
+                  class="float-left ml-1 mt-1"
+                  style="
+                    width: 12px;
+                    height: 12px;
+                    border-radius: 10px;
+                  "
+                  [ngClass]="this.locks[1] === 'on' ? 'status-on' : 'status-off'"
+                ></div>
+              </h6>
+              <br />
+              <p>Tempo Ligado: 0hrs</p>
+              <button (click)="changeLocks('on', 1)" class="btn btn-success">Ligar</button>
+                <button (click)="changeLocks('off', 1)" class="btn btn-danger ml-3">Desligar</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card" style="width: 90%">
+            <div class="card-body">
+              <h5 class="card-title">Portão Principal</h5>
+              <h6 class="card-subtitle mb-2 text-muted">
+                <span class="float-left">Status: </span>
+                <div
+                  class="float-left ml-1 mt-1"
+                  style="
+                    width: 12px;
+                    height: 12px;
+                    border-radius: 10px;
+                  "
+                  [ngClass]="this.locks[2] === 'on' ? 'status-on' : 'status-off'"
+                ></div>
+              </h6>
+              <br />
+              <p>Tempo Ligado: 0hrs</p>
+              <button (click)="changeLocks('on', 2)" class="btn btn-success">Ligar</button>
+                <button (click)="changeLocks('off', 2)" class="btn btn-danger ml-3">Desligar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </span>
+
+    <span *ngIf="module === 'Temperatura'">
+      <h3>Temperatura</h3>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card" style="width: 90%">
+            <div class="card-body">
+              <h5 class="card-title">Cozinha</h5>
+              <h6 class="card-subtitle mb-2 text-muted">
+              <form class="row">
+                <div class="col-md-4">
+                  <label class="mt-2">Temperatura</label>
+                </div>
+                <div class="col-md-4">
+                  <input class="form-control text-center ml-1" type="number" value="22" readonly>
+                </div>
+              </form>
+              </h6>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card" style="width: 90%">
+            <div class="card-body">
+              <h5 class="card-title">Sala</h5>
+              <h6 class="card-subtitle mb-2 text-muted">
+              <form class="row">
+                <div class="col-md-4">
+                  <label class="mt-2">Temperatura</label>
+                </div>
+                <div class="col-md-4">
+                  <input class="form-control text-center ml-1" type="number" value="20" readonly>
+                </div>
+              </form>
+              </h6>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card" style="width: 90%">
+            <div class="card-body">
+              <h5 class="card-title">Quarto 2</h5>
+              <h6 class="card-subtitle mb-2 text-muted">
+              <form class="row">
+                <div class="col-md-4">
+                  <label class="mt-2">Temperatura</label>
+                </div>
+                <div class="col-md-4">
+                  <input class="form-control text-center ml-1" type="number" value="17" readonly>
+                </div>
+              </form>
+              </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </span>
+
+    <span *ngIf="module === 'Ares-Condicionados'">
+      <h3>Ares-Condicionados</h3>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card" style="width: 90%">
+            <div class="card-body">
+              <h5 class="card-title">Quarto 1</h5>
+              <h6 class="card-subtitle text-muted">
+                <span class="float-left">Status: </span>
+                <div
+                  class="float-left ml-1 mt-1"
+                  style="
+                    width: 12px;
+                    height: 12px;
+                    border-radius: 10px;
+                  "
+                  [ngClass]="this.airconditioners[0] === 'on' ? 'status-on' : 'status-off'"
+                ></div>
+              </h6>
+              <br>
+              <form class="row">
+                <div class="col-md-4">
+                  <label class="mt-1">Temperatura</label>
+                </div>
+                <div class="col-md-4">
+                  <input class="form-control" type="number" value="22">
+                </div>
+              </form>
+              <br>
+              <button (click)="changeAir('on', 0)" class="btn btn-success">Ligar</button>
+              <button (click)="changeAir('off', 0)" class="btn btn-danger ml-3">Desligar</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card" style="width: 90%">
+            <div class="card-body">
+              <h5 class="card-title">Quarto 2</h5>
+              <h6 class="card-subtitle text-muted">
+                <span class="float-left">Status: </span>
+                <div
+                  class="float-left ml-1 mt-1"
+                  style="
+                    width: 12px;
+                    height: 12px;
+                    border-radius: 10px;
+                  "
+                  [ngClass]="this.airconditioners[1] === 'on' ? 'status-on' : 'status-off'"
+                ></div>
+              </h6>
+              <br>
+              <form class="row">
+                <div class="col-md-4">
+                  <label class="mt-1">Temperatura</label>
+                </div>
+                <div class="col-md-4">
+                  <input class="form-control" type="number" value="26">
+                </div>
+              </form>
+              <br>
+              <button (click)="changeAir('on', 1)" class="btn btn-success">Ligar</button>
+              <button (click)="changeAir('off', 1)" class="btn btn-danger ml-3">Desligar</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card" style="width: 90%">
+            <div class="card-body">
+              <h5 class="card-title">Sala</h5>
+              <h6 class="card-subtitle text-muted">
+                <span class="float-left">Status: </span>
+                <div
+                  class="float-left ml-1 mt-1"
+                  style="
+                    width: 12px;
+                    height: 12px;
+                    border-radius: 10px;
+                  "
+                  [ngClass]="this.airconditioners[2] === 'on' ? 'status-on' : 'status-off'"
+                ></div>
+              </h6>
+              <br>
+              <form class="row">
+                <div class="col-md-4">
+                  <label class="mt-1">Temperatura</label>
+                </div>
+                <div class="col-md-4">
+                  <input class="form-control" type="number" value="23">
+                </div>
+              </form>
+              <br>
+              <button (click)="changeAir('on', 2)" class="btn btn-success">Ligar</button>
+              <button (click)="changeAir('off', 2)" class="btn btn-danger ml-3">Desligar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </span>
+    </div>
+  </div>
+  <!-- /#page-content-wrapper -->
+</div>
