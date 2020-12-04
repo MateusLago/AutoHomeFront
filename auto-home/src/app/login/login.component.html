@@ -1,14 +1,24 @@
-<form #loginForm="ngForm" class="form-signin mt-5">
+<span *ngIf="loginMode">
+  <form #loginForm="ngForm" class="form-signin mt-5">
     <h1 class="h3 mb-3 font-weight-bold text-center">AutoHome</h1>
-    <label for="inputEmail" class="sr-only">E-mail</label>
-    <input [(ngModel)]="email" name="email" type="email" id="inputEmail" class="form-control" placeholder="E-mail" required autofocus>
-    <label for="inputPassword" class="mt-3 sr-only">Senha</label>
-    <input [(ngModel)]="password" name="password" type="password" id="inputPassword" class="form-control mt-3" placeholder="senha" required>
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> Lembre de mim
-      </label>
-    </div>
-    <button [routerLink]="email !== null && password !== null ? ['/dashboard'] : []" class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
-    <p class="mt-5 mb-3 text-muted">&copy; 2020</p>
+    <h5 class="mb-3 font-weight-bold text-center">Login</h5>
+    <input [(ngModel)]="loginModel.username" name="username" type="username" id="inputName" class="form-control" placeholder="Nome de Usuário" required autofocus>
+     <input [(ngModel)]="loginModel.password" name="password" type="password" id="inputPassword" class="form-control mt-3" placeholder="senha" required>
+    <button (click)="login()" class="btn btn-lg btn-primary btn-block mt-5" type="submit">Entrar</button>
+    <button (click)="goToRegister()" class="btn btn-lg btn-info btn-block" type="submit">Cadastrar</button>
   </form>
+</span>
+
+<span *ngIf="registerMode">
+  <form #loginForm="ngForm" class="form-signin mt-5">
+    <h1 class="h3 mb-3 font-weight-bold text-center">AutoHome</h1>
+    <h5 class="mb-3 font-weight-bold text-center">Cadastrar Usuário</h5>
+    <input [(ngModel)]="registerModel.email" name="email" type="email" id="inputEmail" class="form-control mb-3" placeholder="E-mail" required/>
+    <input [(ngModel)]="registerModel.username" name="username" type="username" id="inputName" class="form-control mb-3" placeholder="Nome de Usuário" required autofocus>
+    <input [(ngModel)]="registerModel.password" name="password" type="password" id="inputPassword" class="form-control" placeholder="senha" required>
+    <button (click)="register()" class="btn btn-lg btn-primary btn-block mt-5" type="submit">Cadastrar</button>
+    <button (click)="goToLogin()" class="btn btn-lg btn-info btn-block" type="submit">Fazer Login</button>
+  </form>
+</span>
+
+<p style="bottom: 0" class="mt-5 mb-3 text-center">AutoHome &copy; 2020</p>

@@ -1,6 +1,12 @@
-export interface LoginModel {
+export class LoginModel {
     username: string;
     password: string;
+}
+
+export class RegisterModel {
+    username: string;
+    password: string;
+    email: string;
 }
 
 export interface LoginResponse {
